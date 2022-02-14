@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Sidebar from './Sidebar';
 import React from 'react';
 
 class Clock extends React.Component {
@@ -31,10 +32,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
         <Clock/>
-        </p>
-        
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -43,7 +41,8 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header>   
+      <Sidebar/>
     </div>
   );
 }
