@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header.js';
 import Sidebar from './Sidebar';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 class Clock extends React.Component {
 
@@ -26,23 +27,30 @@ class Clock extends React.Component {
 }
 
 function App() {
-
+  function startWork(e) {
+    e.preventDefault();
+    console.log('Start Work Now');
+  }
   
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Clock/>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+      <Header/>
+      <Fragment>
+        <div className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <Clock/>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
           Learn React
-        </a>
-      </header>   
-      <Sidebar/>
+          </a>
+          <button onClick={startWork}>Work</button>
+        </div>
+        <Sidebar/>
+      </Fragment> 
     </div>
   );
 }

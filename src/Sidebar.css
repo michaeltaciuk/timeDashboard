@@ -1,5 +1,6 @@
 .sidebar-container {
     position: absolute;
+    margin-top: 80px;
     width: 20.1%;
     height: 100%;
     max-height: 100%;
@@ -110,19 +111,16 @@
     -webkit-text-stroke-color: rgba(100, 100, 100, 0.479);
   }
   
-  .addToList {
+  .addToDo {
     text-align: center;
     margin-top: -5px;
-    margin-bottom: -12px;
+    margin-bottom: 12px;
     letter-spacing: 0.03em;
     font-family: Teko;
     font-weight: 800;
     font-style: normal;
     font-size: 24px;
-    color: #ffffff;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: rgba(0, 255, 21, 0.192);
-    text-shadow: 0px 2px 2px rgb(38, 134, 0);
+    color: #000000;
   }
   
   .sidebar-text {
