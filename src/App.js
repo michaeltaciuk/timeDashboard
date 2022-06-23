@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import logo2 from './stopwatchSmall.png';
 import './App.css';
 import Header from './components/Header.js';
 import Sidebar from './Sidebar';
@@ -37,7 +38,6 @@ function App() {
       <Header/>
       <Fragment>
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <Clock/>
           <a
             className="App-link"
