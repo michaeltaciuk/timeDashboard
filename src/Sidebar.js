@@ -9,7 +9,7 @@ class Sidebar extends Component {
         return (
             <div className="sidebar-container">
                 <div className="header">
-                    <h1 className="sidebar-text">To Do</h1>
+                    <h1 className="sidebar-text">Sessions</h1>
                 </div>
                 <div className="list-container"></div>
                 <button className="addToDo">Add Task</button>
