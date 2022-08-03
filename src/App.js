@@ -1,8 +1,7 @@
-import logo from './logo.svg';
-import logo2 from './stopwatchSmall.png';
+
 import './App.css';
 import Header from './components/Header.js';
-import Sidebar from './Sidebar';
+import Sidebar from './components/Sidebar';
 import Stopwatch from "./components/Stopwatch";
 import React, { Fragment } from 'react';
 
@@ -37,14 +36,6 @@ function App() {
       <Fragment>
         <div className="App-header">
           <Clock/>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-          Learn React
-          </a>
           <a>Current Session</a>
           <Stopwatch/>
         </div>
