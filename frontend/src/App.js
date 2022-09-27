@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/Header.js';
 import Sidebar from './components/Sidebar';
 import Stopwatch from "./components/Stopwatch";
+import ElapsedTimeBar from './components/ElapsedTimeBar';
 import React, { Fragment } from 'react';
 
 class Clock extends React.Component {
@@ -33,7 +34,9 @@ function App() {
     <div className="App">
       <Header/>
       <Fragment>
+        
         <div className="App-header">
+          <ElapsedTimeBar/>
           <Clock/>
           <a>Current Session</a>
           <Stopwatch/>
