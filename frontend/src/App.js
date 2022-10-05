@@ -40,6 +40,18 @@ function App() {
           <Clock/>
           <a>Current Session</a>
           <Stopwatch/>
+          <section class="columns">
+	          <div class="column murmer">
+              <h2>1st Content Area</h2> 
+              <embed src="https://asoftmurmur.com/"></embed>
+	          </div>	
+	          <div class="column pomodoro">
+		          <h2>2nd Content Area</h2>
+              <embed src="https://pomofocus.io/app"></embed>
+		        </div>
+          </section>	
+          
+          
         </div>
         <Sidebar/>
       </Fragment> 
