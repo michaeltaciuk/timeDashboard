@@ -46,7 +46,7 @@ function App() {
     <div className="App">
       <Header/>
       <Fragment>
-        
+        <ElapsedTimeBar timeSpent={timeSpentArray} />
         <div className="App-header">
           <Clock/>
           <a>Current Session</a>
