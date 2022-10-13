@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import StopwatchDisplay from './StopwatchDisplay.js';
 import StopwatchHistory from './StopwatchHistory.js';
+import "./stopwatch.css";
 
 class Stopwatch extends React.Component {
   constructor(props) {
@@ -58,9 +59,14 @@ class Stopwatch extends React.Component {
     });
   };
 
+  newTimeChunk = () => {
+    this.setState({ running: false });
+    clearInterval(this.watch);
+  }
+
   render() {
     return (
-      <div className={'stopwatch'}>
+      <div className='Container'>
         {this.state.running === false && (
           <button onClick={this.start}>START</button>
         )}
@@ -68,6 +74,27 @@ class Stopwatch extends React.Component {
           <button onClick={this.stop}>STOP</button>
         )}
         <button onClick={this.reset}>RESET</button>
+        <div className='grid-container'>
+          <div className='grid-item'>
+            <button onClick={this.newTimeChunk}>Work</button>
+          </div>
+          <div className='grid-item'>
+            <button onClick={this.newTimeChunk}>Break</button>
+          </div>
+          <div className='grid-item'>
+            <button onClick={this.newTimeChunk}>Eat</button>
+          </div>
+          <div className='grid-item'>
+            <button onClick={this.newTimeChunk}>Exercise</button>
+          </div>
+          <div className='grid-item'>
+            <button onClick={this.newTimeChunk}>Read</button>
+          </div>
+          <div className='grid-item'>
+            <button onClick={this.newTimeChunk}>Sleep</button>
+          </div>
+        </div>
+        
         <StopwatchDisplay
           ref="display"
           {...this.state}

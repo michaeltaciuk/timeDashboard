@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import "./ElapsedTimeBar.css";
 import useWindowDimensions from '../hooks/useWindowDimentions.js';
 
@@ -12,14 +12,14 @@ export default function ElapsedTimeBar(props) {
     height = height/10;
     
     return (
-        <>
-            <div className="container" style={{width: `${width}px`, height: `${height}px`}}/>
+        <Fragment className="timeBarContainer">
+            <div className="timeBar" style={{width: `${width}px`, height: `6rem`}}/>
             {props.timeSpent.map(timeChunk => {
                 return (
-                    <div className="container" style={{width: `${width}px`, height: `${height}px`, color: timeChunk.color}}/>
+                    <div className="timeBar" style={{width: `${(width*8000/(timeChunk.seconds))}px`, height: `6rem`, background: `${timeChunk.color}`}}/>
                 );
             })}
-        </>
+        </Fragment>
         
 
     );

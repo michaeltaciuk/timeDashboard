@@ -45,12 +45,16 @@ function App() {
   return (
     <div className="App">
       <Header/>
+      <ElapsedTimeBar timeSpent={timeSpentArray} />
       <Fragment>
-        <ElapsedTimeBar timeSpent={timeSpentArray} />
         <div className="App-header">
           <Clock/>
-          <a>Current Session</a>
+          <a>Change Current Task:</a>
           <Stopwatch/>
+
+
+
+          <br/>
           <section class="columns">
 	          <div class="column murmer">
               <embed src="https://asoftmurmur.com/"></embed>
@@ -59,8 +63,6 @@ function App() {
               <embed src="https://pomofocus.io/app"></embed>
 		        </div>
           </section>	
-          
-          
         </div>
       </Fragment> 
     </div>

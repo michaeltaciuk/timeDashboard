@@ -1,3 +1,9 @@
-.container {
+
+.timeBarContainer {
+  margin-bottom: 50px;
+}
+
+.timeBar {
     background: #0ee6e6;
+    position: absolute;
   }
