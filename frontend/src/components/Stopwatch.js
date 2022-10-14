@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import StopwatchDisplay from './StopwatchDisplay.js';
 import StopwatchHistory from './StopwatchHistory.js';
@@ -13,8 +13,55 @@ class Stopwatch extends React.Component {
       currentTimeMs: 0,
       currentTimeSec: 0,
       currentTimeMin: 0,
+      timeChunks: [],
     };
   }
+
+  componentDidMount() {
+    this.setHistoryState();
+    this.setState({ running: true });
+    this.watch = setInterval(() => this.pace(), 10);
+  }
+
+  setHistoryState = () => {
+    if (localStorage.timeChunks) {
+      this.setState({ timeChunks: localStorage.timeChunks.split('|') });
+    } else {
+      this.setState({ timeChunks: [] });
+    }
+  };
+
+  saveTime = () => {
+    if (typeof Storage !== 'undefined') {
+      this.saveToLocalStorage();
+    } else {
+      console.error('local storage not supported');
+    }
+    this.setHistoryState();
+  };
+
+  saveToLocalStorage = () => {
+    if (localStorage.timeChunks) {
+      localStorage.timeChunks =
+        `${Date().toString()} :: 
+          ${this.formatTime(this.state.currentTimeMin)}:
+          ${this.formatTime(this.state.currentTimeSec)}:
+          ${this.formatTime(this.state.currentTimeMs, 'ms')}|` + localStorage.timeChunks;
+    } else {
+      localStorage.timeChunks = 
+        `${Date().toString()} :: 
+          ${this.formatTime(this.state.currentTimeMin)}:
+          ${this.formatTime(this.state.currentTimeSec)}:
+          ${this.formatTime(this.state.currentTimeMs, 'ms')}|`;
+    }
+  };
+
+  resetHistory = () => {
+    if (localStorage.timeChunks) {
+      localStorage.removeItem('timeChunks');
+    }
+    this.setHistoryState();
+  };
 
   formatTime = (val, ...rest) => {
     let value = val.toString();
@@ -63,19 +110,21 @@ class Stopwatch extends React.Component {
     this.setState({ running: false });
     clearInterval(this.watch);
 
+    this.saveTime();
+
     this.setState({
       currentTimeMs: 0,
       currentTimeSec: 0,
       currentTimeMin: 0,
     });
-    
+
     this.setState({ running: true });
     this.watch = setInterval(() => this.pace(), 10);
   }
 
   render() {
     return (
-      <div className='Container'>
+      <Fragment>
         {this.state.running === false && (
           <button onClick={this.start}>START</button>
         )}
@@ -109,7 +158,16 @@ class Stopwatch extends React.Component {
           {...this.state}
           formatTime={this.formatTime}
         />
-      </div>
+
+        <div className={'stopwatch__history'}>
+          <button onClick={this.saveTime}>SAVE TIME</button>
+          <button onClick={this.resetHistory}>RESET HISTORY</button>
+          <ul>
+            {this.state.timeChunks.map((item, index) => <li key={index}>{item}</li>)}
+          </ul>
+        </div>
+
+      </Fragment>
     );
   }
 }
