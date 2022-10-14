@@ -62,6 +62,15 @@ class Stopwatch extends React.Component {
   newTimeChunk = () => {
     this.setState({ running: false });
     clearInterval(this.watch);
+
+    this.setState({
+      currentTimeMs: 0,
+      currentTimeSec: 0,
+      currentTimeMin: 0,
+    });
+    
+    this.setState({ running: true });
+    this.watch = setInterval(() => this.pace(), 10);
   }
 
   render() {
