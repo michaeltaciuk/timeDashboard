@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import StopwatchDisplay from './StopwatchDisplay.js';
+import ElapsedTimeBar from './ElapsedTimeBar';
 import StopwatchHistory from './StopwatchHistory.js';
 import "./stopwatch.css";
 
@@ -13,19 +14,30 @@ class Stopwatch extends React.Component {
       currentTimeMs: 0,
       currentTimeSec: 0,
       currentTimeMin: 0,
-      timeChunks: [],
+      timeChunks: [
+        {
+          "name": "Sleep",
+          "color": "Blue",
+          "seconds": 28800
+        },
+        {
+          "name": "Work",
+          "color": "Red",
+          "seconds": 14400
+        }
+      ]
     };
   }
 
   componentDidMount() {
-    this.setHistoryState();
+    //this.setHistoryState();
     this.setState({ running: true });
     this.watch = setInterval(() => this.pace(), 10);
   }
 
   setHistoryState = () => {
     if (localStorage.timeChunks) {
-      this.setState({ timeChunks: localStorage.timeChunks.split('|') });
+      this.setState({ timeChunks: localStorage.timeChunks});
     } else {
       this.setState({ timeChunks: [] });
     }
@@ -33,27 +45,11 @@ class Stopwatch extends React.Component {
 
   saveTime = () => {
     if (typeof Storage !== 'undefined') {
-      this.saveToLocalStorage();
+      localStorage.timeChunks = this.state.timeChunks;
     } else {
       console.error('local storage not supported');
     }
     this.setHistoryState();
-  };
-
-  saveToLocalStorage = () => {
-    if (localStorage.timeChunks) {
-      localStorage.timeChunks =
-        `${Date().toString()} :: 
-          ${this.formatTime(this.state.currentTimeMin)}:
-          ${this.formatTime(this.state.currentTimeSec)}:
-          ${this.formatTime(this.state.currentTimeMs, 'ms')}|` + localStorage.timeChunks;
-    } else {
-      localStorage.timeChunks = 
-        `${Date().toString()} :: 
-          ${this.formatTime(this.state.currentTimeMin)}:
-          ${this.formatTime(this.state.currentTimeSec)}:
-          ${this.formatTime(this.state.currentTimeMs, 'ms')}|`;
-    }
   };
 
   resetHistory = () => {
@@ -72,18 +68,6 @@ class Stopwatch extends React.Component {
       value = '0' + value;
     }
     return value;
-  };
-
-  start = () => {
-    if (!this.state.running) {
-      this.setState({ running: true });
-      this.watch = setInterval(() => this.pace(), 10);
-    }
-  };
-
-  stop = () => {
-    this.setState({ running: false });
-    clearInterval(this.watch);
   };
 
   pace = () => {
@@ -106,11 +90,16 @@ class Stopwatch extends React.Component {
     });
   };
 
-  newTimeChunk = () => {
+  newTimeChunk = (name, color) => {
     this.setState({ running: false });
     clearInterval(this.watch);
 
-    this.saveTime();
+    var seconds = Math.floor((this.state.currentTimeMs/1000) + (this.state.currentTimeSec) + (this.state.currentTimeMin*60));
+    this.setState(prev => ({
+      timeChunks: [prev.timeChunks, {name: name, color: color, seconds: seconds}]
+    }))
+
+    //this.saveTime();
 
     this.setState({
       currentTimeMs: 0,
@@ -125,12 +114,10 @@ class Stopwatch extends React.Component {
   render() {
     return (
       <Fragment>
-        {this.state.running === false && (
-          <button onClick={this.start}>START</button>
-        )}
-        {this.state.running === true && (
-          <button onClick={this.stop}>STOP</button>
-        )}
+        <div className='time-bar'>
+          <ElapsedTimeBar  timeChunks={this.state.timeChunks} />
+        </div>
+        <br/>
         <button onClick={this.reset}>RESET</button>
         <div className='grid-container'>
           <div className='grid-item'>
@@ -163,7 +150,7 @@ class Stopwatch extends React.Component {
           <button onClick={this.saveTime}>SAVE TIME</button>
           <button onClick={this.resetHistory}>RESET HISTORY</button>
           <ul>
-            {this.state.timeChunks.map((item, index) => <li key={index}>{item}</li>)}
+            
           </ul>
         </div>
 
@@ -180,3 +167,5 @@ export default Stopwatch;
 //of forgeting to track you time and then retroactivly edit your time spent to what you think 
 //it was. This will inevitably be inacurate and hide from you where your time is being unkowingly
 //wasted. Which is contraty to the whole point of traching your time.
+
+//{this.state.timeChunks.map((item, index) => <li key={index}>{item.name}</li>)}

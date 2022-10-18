@@ -1,15 +1,15 @@
 import './App.css';
 import Header from './components/Header.js';
-import Sidebar from './components/Sidebar';
 import Stopwatch from "./components/Stopwatch";
-import ElapsedTimeBar from './components/ElapsedTimeBar';
 import React, { Fragment } from 'react';
 
 class Clock extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {date: new Date()};
+    this.state = {
+      date: new Date()
+    };
   }
 
   render() {
@@ -28,32 +28,18 @@ class Clock extends React.Component {
 }
 
 function App() {
-  
-  var timeSpentArray = [
-    {
-      "name": "Sleep",
-      "color": "Blue",
-      "seconds": 28800
-    },
-    {
-      "name": "Work",
-      "color": "Red",
-      "seconds": 14400
-    }
-  ]
 
+  var timeChunks = [];
+  
   return (
     <div className="App">
       <Header/>
-      <ElapsedTimeBar timeSpent={timeSpentArray} />
+      
       <Fragment>
         <div className="App-header">
           <Clock/>
           <a>Change Current Task:</a>
           <Stopwatch/>
-
-
-
           <br/>
           <section class="columns">
 	          <div class="column murmer">

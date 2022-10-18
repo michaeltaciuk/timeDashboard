@@ -14,13 +14,13 @@ export default function ElapsedTimeBar(props) {
     return (
         <Fragment className="timeBarContainer">
             <div className="timeBar" style={{width: `${width}px`, height: `6rem`}}/>
-            {props.timeSpent.map(timeChunk => {
+            {props.timeChunk.map(timeChunk => {
                 return (
                     <div className="timeBar" style={{width: `${(width*8000/(timeChunk.seconds))}px`, height: `6rem`, background: `${timeChunk.color}`}}/>
                 );
             })}
+            <br/>
         </Fragment>
-        
 
     );
 }
