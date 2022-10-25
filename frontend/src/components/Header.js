@@ -25,7 +25,7 @@ class Header extends Component {
     render() {
         return (
             <nav>
-                <div class="nav-bg"></div>
+                <div className="nav-bg"></div>
                 <ul>
                     <li><a href="">About</a></li>
                     <li><a href="">Books</a></li>

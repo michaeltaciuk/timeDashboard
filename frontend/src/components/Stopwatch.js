@@ -31,6 +31,7 @@ class Stopwatch extends React.Component {
 
   componentDidMount() {
     //this.setHistoryState();
+    console.log(this.state.timeChunks);
     this.setState({ running: true });
     this.watch = setInterval(() => this.pace(), 10);
   }
@@ -92,12 +93,14 @@ class Stopwatch extends React.Component {
 
   newTimeChunk = (name, color) => {
     this.setState({ running: false });
-    clearInterval(this.watch);
+    clearInterval(this.watch); 
 
     var seconds = Math.floor((this.state.currentTimeMs/1000) + (this.state.currentTimeSec) + (this.state.currentTimeMin*60));
     this.setState(prev => ({
-      timeChunks: [prev.timeChunks, {name: name, color: color, seconds: seconds}]
+      timeChunks: [...prev.timeChunks, {name: name, color: color, seconds: seconds}]
     }))
+    
+    console.log(this.state.timeChunks);
 
     //this.saveTime();
 
@@ -121,22 +124,22 @@ class Stopwatch extends React.Component {
         <button onClick={this.reset}>RESET</button>
         <div className='grid-container'>
           <div className='grid-item'>
-            <button onClick={this.newTimeChunk}>Work</button>
+            <button onClick={() => this.newTimeChunk("Work", "blue")}>Work</button>
           </div>
           <div className='grid-item'>
-            <button onClick={this.newTimeChunk}>Break</button>
+            <button onClick={() => this.newTimeChunk("Break", "gray")}>Break</button>
           </div>
           <div className='grid-item'>
-            <button onClick={this.newTimeChunk}>Eat</button>
+            <button onClick={() => this.newTimeChunk("Eat", "green")}>Eat</button>
           </div>
           <div className='grid-item'>
-            <button onClick={this.newTimeChunk}>Exercise</button>
+            <button onClick={() => this.newTimeChunk("Exercise", "red")}>Exercise</button>
           </div>
           <div className='grid-item'>
-            <button onClick={this.newTimeChunk}>Read</button>
+            <button onClick={() => this.newTimeChunk("Read", "yellow")}>Read</button>
           </div>
           <div className='grid-item'>
-            <button onClick={this.newTimeChunk}>Sleep</button>
+            <button onClick={() => this.newTimeChunk("Sleep", "black")}>Sleep</button>
           </div>
         </div>
         

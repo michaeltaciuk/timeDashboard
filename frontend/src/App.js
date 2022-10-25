@@ -28,8 +28,6 @@ class Clock extends React.Component {
 }
 
 function App() {
-
-  var timeChunks = [];
   
   return (
     <div className="App">
@@ -41,11 +39,11 @@ function App() {
           <a>Change Current Task:</a>
           <Stopwatch/>
           <br/>
-          <section class="columns">
-	          <div class="column murmer">
+          <section className="columns">
+	          <div className="column murmer">
               <embed src="https://asoftmurmur.com/"></embed>
 	          </div>	
-	          <div class="column pomodoro">
+	          <div className="column pomodoro">
               <embed src="https://pomofocus.io/app"></embed>
 		        </div>
           </section>	
