@@ -14,6 +14,7 @@ class Stopwatch extends React.Component {
       currentTimeMs: 0,
       currentTimeSec: 0,
       currentTimeMin: 0,
+      lastStartTime: 43200,
       timeChunks: [
         {
           "name": "Sleep",
@@ -98,15 +99,17 @@ class Stopwatch extends React.Component {
     clearInterval(this.watch); 
 
     var seconds = Math.floor((this.state.currentTimeMs/1000) + (this.state.currentTimeSec) + (this.state.currentTimeMin*60));
-    var started = this.state.timeChunks
+    
+    
     this.setState(prev => ({
-      timeChunks: [...prev.timeChunks, {name: name, color: color, seconds: seconds}]
+      timeChunks: [...prev.timeChunks, {name: name, color: color, started: prev.lastStartTime ,seconds: seconds}]
     }))
     
     console.log(this.state.timeChunks);
-
+    
     //this.saveTime();
 
+    this.setState(prev => ({lastStartTime: seconds + prev.lastStartTime}));
     this.setState({
       currentTimeMs: 0,
       currentTimeSec: 0,
