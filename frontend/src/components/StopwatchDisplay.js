@@ -6,8 +6,7 @@ class StopwatchDisplay extends React.Component {
       <div className={'stopwatch__display'}>
         <span>
           {this.props.formatTime(this.props.currentTimeMin)}:
-          {this.props.formatTime(this.props.currentTimeSec)}:
-          {this.props.formatTime(this.props.currentTimeMs, 'ms')}
+          {this.props.formatTime(this.props.currentTimeSec)}
         </span>
       </div>
     );
