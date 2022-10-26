@@ -130,22 +130,22 @@ class Stopwatch extends React.Component {
         <button onClick={this.reset}>RESET</button>
         <div className='grid-container'>
           <div className='grid-item'>
-            <button onClick={() => this.newTimeChunk("Work", "blue")}>Work</button>
+            <button className='start-task-button' onClick={() => this.newTimeChunk("Work", "blue")}>Start Work</button>
           </div>
           <div className='grid-item'>
-            <button onClick={() => this.newTimeChunk("Break", "gray")}>Break</button>
+            <button className='start-task-button' onClick={() => this.newTimeChunk("Break", "gray")}>Start Break</button>
           </div>
           <div className='grid-item'>
-            <button onClick={() => this.newTimeChunk("Eat", "green")}>Eat</button>
+            <button className='start-task-button' onClick={() => this.newTimeChunk("Eat", "green")}>Start Eat</button>
           </div>
           <div className='grid-item'>
-            <button onClick={() => this.newTimeChunk("Exercise", "red")}>Exercise</button>
+            <button className='start-task-button' onClick={() => this.newTimeChunk("Exercise", "red")}>Start Exercise</button>
           </div>
           <div className='grid-item'>
-            <button onClick={() => this.newTimeChunk("Read", "yellow")}>Read</button>
+            <button className='start-task-button' onClick={() => this.newTimeChunk("Read", "yellow")}>Start Read</button>
           </div>
           <div className='grid-item'>
-            <button onClick={() => this.newTimeChunk("Sleep", "black")}>Sleep</button>
+            <button className='start-task-button' onClick={() => this.newTimeChunk("Sleep", "black")}>Start Sleep</button>
           </div>
         </div>
         
