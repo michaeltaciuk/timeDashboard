@@ -39,14 +39,14 @@ function App() {
           <a>Change Current Task:</a>
           <Stopwatch/>
           <br/>
-          <section className="columns">
+          {/* <section className="columns">
 	          <div className="column murmer">
               <embed src="https://asoftmurmur.com/"></embed>
 	          </div>	
 	          <div className="column pomodoro">
               <embed src="https://pomofocus.io/app"></embed>
 		        </div>
-          </section>	
+          </section>	 */}
         </div>
       </Fragment> 
     </div>

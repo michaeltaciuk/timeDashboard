@@ -42,7 +42,7 @@ const ElapsedTimeBar = (props) => {
     return (
         <Fragment>
             <div className="timeBarContainer">
-                <div className="timeBar" style={{width: `${width}px`, height: `6rem`}}/>
+                <div className="timeBar" style={{width: `${width}px`, height: height}}/>
                 {timeChunks.map( timeChunk => 
                     <div className="timeBar" 
                     style={{ 

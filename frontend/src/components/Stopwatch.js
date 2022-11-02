@@ -15,6 +15,7 @@ class Stopwatch extends React.Component {
       currentTimeSec: 0,
       currentTimeMin: 0,
       lastStartTime: 43200,
+      currentTask: "Break",
       timeChunks: [
         {
           "name": "Sleep",
@@ -86,14 +87,6 @@ class Stopwatch extends React.Component {
     }
   };
 
-  reset = () => {
-    this.setState({
-      currentTimeMs: 0,
-      currentTimeSec: 0,
-      currentTimeMin: 0,
-    });
-  };
-
   newTimeChunk = (name, color) => {
     this.setState({ running: false });
     clearInterval(this.watch); 
@@ -127,7 +120,12 @@ class Stopwatch extends React.Component {
           <ElapsedTimeBar  timeChunks={this.state.timeChunks} />
         </div>
         <br/>
-        <button onClick={this.reset}>RESET</button>
+        <div>
+          <p>Current Task: {this.state.currentTask} {this.state.currentTimeSec}</p>
+          
+        </div>
+       
+        
         <div className='grid-container'>
           <div className='grid-item'>
             <button className='start-task-button' onClick={() => this.newTimeChunk("Work", "blue")}>Start Work</button>
@@ -148,12 +146,6 @@ class Stopwatch extends React.Component {
             <button className='start-task-button' onClick={() => this.newTimeChunk("Sleep", "black")}>Start Sleep</button>
           </div>
         </div>
-        
-        <StopwatchDisplay
-          ref="display"
-          {...this.state}
-          formatTime={this.formatTime}
-        />
 
         <div className={'stopwatch__history'}>
           <button onClick={this.saveTime}>SAVE TIME</button>
