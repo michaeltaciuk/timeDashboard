@@ -14,20 +14,15 @@ class Stopwatch extends React.Component {
       currentTimeMs: 0,
       currentTimeSec: 0,
       currentTimeMin: 0,
-      lastStartTime: 43200,
+      currentTaskStarted: 28800,
       currentTask: "Break",
+      currentColor: "gray",
       timeChunks: [
         {
           "name": "Sleep",
           "color": "Blue",
           "started": 0,
           "seconds": 28800
-        },
-        {
-          "name": "Work",
-          "color": "Red",
-          "started": 28800,
-          "seconds": 14400
         }
       ]
     };
@@ -38,6 +33,14 @@ class Stopwatch extends React.Component {
     console.log(this.state.timeChunks);
     this.setState({ running: true });
     this.watch = setInterval(() => this.pace(), 10);
+
+    var d = new Date();
+    var seconds = Math.floor((d.getSeconds()) + (d.getMinutes()*60) + (d.getHours()*3600)) - 28800;
+    console.log(seconds + " ");
+    this.setState(prev => ({
+      timeChunks: [...prev.timeChunks, {name: "break", color: "gray", started: prev.currentTaskStarted , seconds: seconds}]
+    }))
+    this.setState(prev => ({currentTaskStarted: seconds + prev.currentTaskStarted}));
   }
 
   setHistoryState = () => {
@@ -95,14 +98,14 @@ class Stopwatch extends React.Component {
     
     
     this.setState(prev => ({
-      timeChunks: [...prev.timeChunks, {name: name, color: color, started: prev.lastStartTime ,seconds: seconds}]
+      timeChunks: [...prev.timeChunks, {name: name, color: color, started: prev.currentTaskStarted ,seconds: seconds}]
     }))
     
     console.log(this.state.timeChunks);
     
     //this.saveTime();
 
-    this.setState(prev => ({lastStartTime: seconds + prev.lastStartTime}));
+    this.setState(prev => ({currentTaskStarted: seconds + prev.currentTaskStarted}));
     this.setState({
       currentTimeMs: 0,
       currentTimeSec: 0,
@@ -128,7 +131,7 @@ class Stopwatch extends React.Component {
         
         <div className='grid-container'>
           <div className='grid-item'>
-            <button className='start-task-button' onClick={() => this.newTimeChunk("Work", "blue")}>Start Work</button>
+            <button className='start-task-button' onClick={() => this.newTimeChunk("Work", "orange")}>Start Work</button>
           </div>
           <div className='grid-item'>
             <button className='start-task-button' onClick={() => this.newTimeChunk("Break", "gray")}>Start Break</button>
@@ -143,7 +146,7 @@ class Stopwatch extends React.Component {
             <button className='start-task-button' onClick={() => this.newTimeChunk("Read", "yellow")}>Start Read</button>
           </div>
           <div className='grid-item'>
-            <button className='start-task-button' onClick={() => this.newTimeChunk("Sleep", "black")}>Start Sleep</button>
+            <button className='start-task-button' onClick={() => this.newTimeChunk("Sleep", "blue")}>Start Sleep</button>
           </div>
         </div>
 
