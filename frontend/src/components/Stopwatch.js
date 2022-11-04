@@ -30,17 +30,17 @@ class Stopwatch extends React.Component {
 
   componentDidMount() {
     //this.setHistoryState();
-    console.log(this.state.timeChunks);
-    this.setState({ running: true });
-    this.watch = setInterval(() => this.pace(), 10);
+    
+    // this.setState({ running: true });
+    // this.watch = setInterval(() => this.pace(), 10);
 
     var d = new Date();
-    var seconds = Math.floor((d.getSeconds()) + (d.getMinutes()*60) + (d.getHours()*3600)) - 28800;
-    console.log(seconds + " ");
+    var seconds = Math.floor((d.getSeconds()) + (d.getMinutes()*60) + (d.getHours()*3600));
+
     this.setState(prev => ({
-      timeChunks: [...prev.timeChunks, {name: "break", color: "gray", started: prev.currentTaskStarted , seconds: seconds}]
+      timeChunks: [...prev.timeChunks, {name: "break", color: "gray", started: prev.currentTaskStarted , seconds: (seconds - prev.currentTaskStarted)}]
     }))
-    this.setState(prev => ({currentTaskStarted: seconds + prev.currentTaskStarted}));
+    this.setState(prev => ({currentTaskStarted: seconds}));
   }
 
   setHistoryState = () => {
@@ -83,6 +83,7 @@ class Stopwatch extends React.Component {
     if (this.state.currentTimeMs >= 1000) {
       this.setState({ currentTimeSec: this.state.currentTimeSec + 1 });
       this.setState({ currentTimeMs: 0 });
+      
     }
     if (this.state.currentTimeSec >= 60) {
       this.setState({ currentTimeMin: this.state.currentTimeMin + 1 });
@@ -91,33 +92,34 @@ class Stopwatch extends React.Component {
   };
 
   newTimeChunk = (name, color) => {
-    this.setState({ running: false });
-    clearInterval(this.watch); 
+    // this.setState({ running: false });
+    // clearInterval(this.watch); 
+    
+    var d = new Date();
+    var s = Math.floor((d.getSeconds()) + (d.getMinutes()*60) + (d.getHours()*3600));
+    console.log(s);
 
-    var seconds = Math.floor((this.state.currentTimeMs/1000) + (this.state.currentTimeSec) + (this.state.currentTimeMin*60));
-    
-    
     this.setState(prev => ({
-      timeChunks: [...prev.timeChunks, {name: prev.currentTask, color: prev.currentColor, started: prev.currentTaskStarted ,seconds: seconds}]
+      timeChunks: [...prev.timeChunks, {name: prev.currentTask, color: prev.currentColor, started: prev.currentTaskStarted ,seconds: (s - prev.currentTaskStarted)}]
     }))
-    
-    console.log(this.state.timeChunks);
     
     //this.saveTime();
     this.setState({ currentColor: color });
     this.setState({ currentTask: name });
-    this.setState(prev => ({currentTaskStarted: seconds + prev.currentTaskStarted}));
-    this.setState({
-      currentTimeMs: 0,
-      currentTimeSec: 0,
-      currentTimeMin: 0,
-    });
+    this.setState({ currentTaskStarted: s});
 
-    this.setState({ running: true });
-    this.watch = setInterval(() => this.pace(), 10);
+    // this.setState({
+    //   currentTimeMs: 0,
+    //   currentTimeSec: 0,
+    //   currentTimeMin: 0,
+    // });
+
+    // this.setState({ running: true });
+    // this.watch = setInterval(() => this.pace(), 10);
   }
 
   render() {
+    console.log(this.state.timeChunks);
     return (
       <Fragment>
         <div className='time-bar'>
@@ -125,7 +127,7 @@ class Stopwatch extends React.Component {
         </div>
         <br/>
         <div>
-          <p>Current Task: {this.state.currentTask} {this.state.currentTimeSec}</p>
+          <p>Current Task: {this.state.currentTask}</p>
           
         </div>
        
