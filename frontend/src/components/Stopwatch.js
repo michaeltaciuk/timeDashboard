@@ -98,13 +98,14 @@ class Stopwatch extends React.Component {
     
     
     this.setState(prev => ({
-      timeChunks: [...prev.timeChunks, {name: name, color: color, started: prev.currentTaskStarted ,seconds: seconds}]
+      timeChunks: [...prev.timeChunks, {name: prev.currentTask, color: prev.currentColor, started: prev.currentTaskStarted ,seconds: seconds}]
     }))
     
     console.log(this.state.timeChunks);
     
     //this.saveTime();
-
+    this.setState({ currentColor: color });
+    this.setState({ currentTask: name });
     this.setState(prev => ({currentTaskStarted: seconds + prev.currentTaskStarted}));
     this.setState({
       currentTimeMs: 0,
