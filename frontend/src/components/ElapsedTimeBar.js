@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import "./ElapsedTimeBar.css";
 import useWindowDimensions from '../hooks/useWindowDimentions.js';
+import { Tooltip } from '@mui/material';
 
 // export default function ElapsedTimeBar({ props }) {
     
@@ -44,13 +45,16 @@ const ElapsedTimeBar = (props) => {
             <div className="timeBarContainer">
                 <div className="timeBar" style={{width: `${width}px`, height: height}}/>
                 {timeChunks.map( timeChunk => 
-                    <div className="timeBar" 
-                    style={{ 
-                        width: `${(width * (timeChunk.seconds / 86400))}px`, 
-                        left: `${(width * (timeChunk.started / 86400))}px`,
-                        height: height, 
-                        background: `${timeChunk.color}` }} 
-                    />)}
+                    <Tooltip title={timeChunk.name}>
+                        <div className="timeBar" 
+                        style={{ 
+                            width: `${(width * (timeChunk.seconds / 86400))}px`, 
+                            left: `${(width * (timeChunk.started / 86400))}px`,
+                            height: height, 
+                            background: `${timeChunk.color}` }} 
+                        />
+                    </Tooltip>
+                    )}
             </div>
             <br/>
         </Fragment>

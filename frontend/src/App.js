@@ -31,24 +31,13 @@ function App() {
   
   return (
     <div className="App">
-      <Header/>
-      
       <Fragment>
         <div className="App-header">
           <Clock/>
-          <a>Change Current Task:</a>
           <Stopwatch/>
-          <br/>
-          {/* <section className="columns">
-	          <div className="column murmer">
-              <embed src="https://asoftmurmur.com/"></embed>
-	          </div>	
-	          <div className="column pomodoro">
-              <embed src="https://pomofocus.io/app"></embed>
-		        </div>
-          </section>	 */}
         </div>
       </Fragment> 
+      <Header/>
     </div>
   );
 }

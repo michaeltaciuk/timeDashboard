@@ -38,7 +38,7 @@ class Stopwatch extends React.Component {
     var seconds = Math.floor((d.getSeconds()) + (d.getMinutes()*60) + (d.getHours()*3600));
 
     this.setState(prev => ({
-      timeChunks: [...prev.timeChunks, {name: "break", color: "gray", started: prev.currentTaskStarted , seconds: (seconds - prev.currentTaskStarted)}]
+      timeChunks: [...prev.timeChunks, {name: "Break", color: "gray", started: prev.currentTaskStarted , seconds: (seconds - prev.currentTaskStarted)}]
     }))
     this.setState(prev => ({currentTaskStarted: seconds}));
   }
