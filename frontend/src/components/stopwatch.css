@@ -2,6 +2,8 @@
     display: grid;
     grid-template-columns: auto auto auto;
     margin: 10px;
+    margin: 20%;
+    margin-top: 0;
   }
   .grid-item {
     padding: 20px;
@@ -15,12 +17,13 @@
 
   .start-task-button {
     background: rgb(31, 83, 255);
-    font-size: 45px;
+    width: 10em;
     border-radius: 5px;
     padding-left: 1em;
     padding-right: 1em;
     padding-top: 1em;
     padding-bottom: 1em;
+    cursor: pointer;
   }
 
   .runnig-task-button {

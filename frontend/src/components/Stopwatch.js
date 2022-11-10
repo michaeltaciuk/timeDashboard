@@ -153,13 +153,13 @@ class Stopwatch extends React.Component {
           </div>
         </div>
 
-        <div className={'stopwatch__history'}>
+        {/* <div className={'stopwatch__history'}>
           <button onClick={this.saveTime}>SAVE TIME</button>
           <button onClick={this.resetHistory}>RESET HISTORY</button>
           <ul>
             
           </ul>
-        </div>
+        </div> */}
 
       </Fragment>
     );
@@ -167,12 +167,5 @@ class Stopwatch extends React.Component {
 }
 
 export default Stopwatch;
-
-
-//Edit History Info Button
-//We dont allow editing of the history of tacked time so that you dont get into the habbit
-//of forgeting to track you time and then retroactivly edit your time spent to what you think 
-//it was. This will inevitably be inacurate and hide from you where your time is being unkowingly
-//wasted. Which is contraty to the whole point of traching your time.
 
 //{this.state.timeChunks.map((item, index) => <li key={index}>{item.name}</li>)}
