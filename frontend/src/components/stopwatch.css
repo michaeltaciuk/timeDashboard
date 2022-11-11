@@ -16,14 +16,19 @@
   }
 
   .start-task-button {
-    background: rgb(31, 83, 255);
-    width: 10em;
+    background: #334E68;
+    color: #cfcfcf;
+    width: 20vw;
     border-radius: 5px;
     padding-left: 1em;
     padding-right: 1em;
     padding-top: 1em;
     padding-bottom: 1em;
     cursor: pointer;
+  }
+
+  .start-task-button:hover {
+    transform: scale(1.1);
   }
 
   .runnig-task-button {
