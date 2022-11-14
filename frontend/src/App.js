@@ -31,19 +31,22 @@ function App() {
   
   return (
     <div className="App">
+      <Header/>
       <Fragment>
         <div className="App-header">
-          <Clock/>
+          {/* <p>"The best time to plant a tree was 20 years ago. The second best time is now."</p> */}
           <Stopwatch/>
         </div>
+        {/* <Clock/> */}
         <p>
-          We dont allow editing of the history of tacked time so that you dont get into the habbit 
-          of forgeting to track your time and then retroactivly editing your history to what you think 
-          it was. This will inevitably be inacurate and hide from you where your time is being 
-          unkowingly wasted. Which is contraty to the whole goal of tracking your time.
+          We dont allow editing of the history of tracked time so that you dont get into the habbit 
+          of forgeting to track your time and then retroactively editing your history to what you think 
+          it was. This will inevitably be inaccurate and hide from you where your time is being 
+          unknowingly wasted. Which is contrary to the goal of tracking your time.
         </p>
+        <br/>
       </Fragment> 
-      <Header/>
+      
     </div>
   );
 }

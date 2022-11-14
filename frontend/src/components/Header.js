@@ -27,11 +27,11 @@ class Header extends Component {
             <nav>
                 <div className="nav-bg"></div>
                 <ul>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Books</a></li>
+                <li><a target='_blank' href="https://jamesclear.com/atomic-habits" rel="noreferrer">Books</a></li>
+                    {/* <li><a href="">About</a></li>
                     <li><a href="">Links</a></li>
-                    <li><a href="">Account</a></li>
-                    </ul>
+                    <li><a href="">Account</a></li> */}
+                </ul>
             </nav>
         );
     }
