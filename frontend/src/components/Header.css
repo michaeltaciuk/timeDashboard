@@ -15,10 +15,17 @@ nav ul {
     float: right;
 }
 
+.todays-date {
+    margin: 0;
+    float: left;
+    font-size: 2em;
+    padding: .2em 0.5em;
+}
+
 nav ul li {
     display: inline-block;
     margin: 0;
-    padding: .2em .7em;
+    padding: .7em 0.5em;
 }
 
 nav a {
@@ -26,7 +33,6 @@ nav a {
     height: 100%;
     color: white;
     text-decoration: none;
-    font-family: Ubuntu;
     font-size: 1.15em;
     font-weight: lighter;
     letter-spacing: 1px;

@@ -45,7 +45,7 @@ const ElapsedTimeBar = (props) => {
             <div className="timeBarContainer">
                 <div className="timeBar" style={{width: `${width}px`, height: height}}/>
                 {timeChunks.map( timeChunk => 
-                    <Tooltip title={timeChunk.name + ' ' + (timeChunk.seconds / 60) + 'm'}>
+                    <Tooltip title={timeChunk.name + ': ' + (Math.floor(timeChunk.seconds / 60)) + ' min'}>
                         <div className="timeBar" 
                         style={{ 
                             width: `${(width * (timeChunk.seconds / 86400))}px`, 

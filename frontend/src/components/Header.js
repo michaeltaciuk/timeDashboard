@@ -13,6 +13,7 @@ class Header extends Component {
         super(props);
         this.state = {
             showAccountMenu: false,
+            date: new Date()
         };
     }
 
@@ -26,6 +27,7 @@ class Header extends Component {
         return (
             <nav>
                 <div className="nav-bg"></div>
+                <div className="todays-date">{this.state.date.toDateString()}</div>
                 <ul>
                 <li><a target='_blank' href="https://jamesclear.com/atomic-habits" rel="noreferrer">Books</a></li>
                     {/* <li><a href="">About</a></li>
