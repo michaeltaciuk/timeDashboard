@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header.js';
 import Stopwatch from "./components/Stopwatch";
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 
 class Clock extends React.Component {
 
@@ -28,6 +28,17 @@ class Clock extends React.Component {
 }
 
 function App() {
+
+  useEffect(() => {
+    const unloadCallback = (event) => {
+      event.preventDefault();
+      event.returnValue = "";
+      return "";
+    };
+  
+    window.addEventListener("beforeunload", unloadCallback);
+    return () => window.removeEventListener("beforeunload", unloadCallback);
+  }, []);
   
   return (
     <div className="App">
