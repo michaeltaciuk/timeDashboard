@@ -2,6 +2,7 @@
   text-align: center;
   background-color: #102A43;
   color: #cfcfcf;
+  min-height: 100vh;
 }
 
 .App-header {
