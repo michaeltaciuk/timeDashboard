@@ -1,31 +1,8 @@
 import './App.css';
 import Header from './components/Header.js';
 import Stopwatch from "./components/Stopwatch";
+import SuccessfulSchedules from './components/SuccessfulSchedules';
 import React, { Fragment, useEffect } from 'react';
-
-class Clock extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      date: new Date()
-    };
-  }
-
-  render() {
-    return <div>{this.state.date.toLocaleTimeString()}</div>
-  }
-
-  componentDidMount() {
-    const oneSecond = 1000;
-    this.intervalID = setInterval(() => {this.setState({ date: new Date() });}, oneSecond);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.intervalID);
-  }
-
-}
 
 function App() {
 
@@ -48,7 +25,7 @@ function App() {
           {/* <p>"The best time to plant a tree was 20 years ago. The second best time is now."</p> */}
           <Stopwatch/>
         </div>
-        {/* <Clock/> */}
+        <SuccessfulSchedules/>
         <p>
           We dont allow editing of the history of tracked time so that you dont get into the habbit 
           of forgeting to track your time and then retroactively editing your history to what you think 

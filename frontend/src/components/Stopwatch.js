@@ -4,6 +4,7 @@ import StopwatchDisplay from './StopwatchDisplay.js';
 import ElapsedTimeBar from './ElapsedTimeBar';
 import StopwatchHistory from './StopwatchHistory.js';
 import "./stopwatch.css";
+import TextClock from './TextClock.js';
 
 class Stopwatch extends React.Component {
   constructor(props) {
@@ -125,8 +126,11 @@ class Stopwatch extends React.Component {
         <div className='time-bar'>
           <ElapsedTimeBar  timeChunks={this.state.timeChunks} />
         </div>
+        
         <br/>
+        <TextClock/>
         <div>
+
           <p>Current Task: {this.state.currentTask}</p>
           
         </div>

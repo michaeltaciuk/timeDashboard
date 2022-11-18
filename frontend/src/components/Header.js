@@ -29,7 +29,7 @@ class Header extends Component {
                 <div className="nav-bg"></div>
                 <div className="todays-date">{this.state.date.toDateString()}</div>
                 <ul>
-                <li><a target='_blank' href="https://jamesclear.com/atomic-habits" rel="noreferrer">Books</a></li>
+                <li><a target='_blank' href="https://honey-shade-485.notion.site/Time-Management-Books-2c26e7c1891c4ead89115a2e54252de0" rel="noreferrer">Books</a></li>
                     {/* <li><a href="">About</a></li>
                     <li><a href="">Links</a></li>
                     <li><a href="">Account</a></li> */}
