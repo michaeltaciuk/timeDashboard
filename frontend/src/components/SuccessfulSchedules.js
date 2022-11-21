@@ -33,6 +33,18 @@ const SuccessfulSchedules = (props) => {
             "color": "Orange",
             "started": 50400,
             "seconds": 14400
+        },
+        {
+            "name": "Break",
+            "color": "Gray",
+            "started": 64800,
+            "seconds": 14400
+        },
+        {
+            "name": "Sleep",
+            "color": "Blue",
+            "started": 79200,
+            "seconds": 10800
         }
     ]
 

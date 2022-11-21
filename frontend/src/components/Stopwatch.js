@@ -39,7 +39,7 @@ class Stopwatch extends React.Component {
     var seconds = Math.floor((d.getSeconds()) + (d.getMinutes()*60) + (d.getHours()*3600));
 
     this.setState(prev => ({
-      timeChunks: [...prev.timeChunks, {name: "Break", color: "gray", started: prev.currentTaskStarted , seconds: (seconds - prev.currentTaskStarted)}]
+      timeChunks: [...prev.timeChunks, {name: "Sleep In", color: "#424242", started: prev.currentTaskStarted , seconds: (seconds - prev.currentTaskStarted)}]
     }))
     this.setState(prev => ({currentTaskStarted: seconds}));
   }
@@ -156,14 +156,6 @@ class Stopwatch extends React.Component {
             <button className='start-task-button' onClick={() => this.newTimeChunk("Sleep", "blue")}>Start Sleep</button>
           </div>
         </div>
-
-        {/* <div className={'stopwatch__history'}>
-          <button onClick={this.saveTime}>SAVE TIME</button>
-          <button onClick={this.resetHistory}>RESET HISTORY</button>
-          <ul>
-            
-          </ul>
-        </div> */}
 
       </Fragment>
     );
