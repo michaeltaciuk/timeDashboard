@@ -11,7 +11,7 @@ const SuccessfulSchedules = (props) => {
           "seconds": 18000
         },
         {
-            "name": "Rise",
+            "name": "Rise, Wash, Plan Day and Breakfast",
             "color": "lightgreen",
             "started": 18000,
             "seconds": 10800
@@ -35,7 +35,7 @@ const SuccessfulSchedules = (props) => {
             "seconds": 14400
         },
         {
-            "name": "Break",
+            "name": "Supper, Music, Diversion or Conversation. Examination of the day and put things in their places",
             "color": "Gray",
             "started": 64800,
             "seconds": 14400

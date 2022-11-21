@@ -138,22 +138,34 @@ class Stopwatch extends React.Component {
         
         <div className='grid-container'>
           <div className='grid-item'>
-            <button className='start-task-button' onClick={() => this.newTimeChunk("Work", "orange")}>Start Work</button>
+            <button className='start-task-button' 
+            style={{ background: this.state.currentTask === "Work" ? "#07b338" : "#334E68" }}
+            onClick={() => this.newTimeChunk("Work", "orange")}>Start Work</button>
           </div>
           <div className='grid-item'>
-            <button className='start-task-button' onClick={() => this.newTimeChunk("Break", "gray")}>Start Break</button>
+            <button className='start-task-button' 
+              style={{ background: this.state.currentTask === "Break" ? "#07b338" : "#334E68" }} 
+              onClick={() => this.newTimeChunk("Break", "gray")}>Start Break</button>
           </div>
           <div className='grid-item'>
-            <button className='start-task-button' onClick={() => this.newTimeChunk("Eat", "green")}>Start Eat</button>
+            <button className='start-task-button' 
+            style={{ background: this.state.currentTask === "Eat" ? "#07b338" : "#334E68" }} 
+            onClick={() => this.newTimeChunk("Eat", "green")}>Start Eat</button>
           </div>
           <div className='grid-item'>
-            <button className='start-task-button' onClick={() => this.newTimeChunk("Exercise", "red")}>Start Exercise</button>
+            <button className='start-task-button' 
+            style={{ background: this.state.currentTask === "Exercise" ? "#07b338" : "#334E68" }} 
+            onClick={() => this.newTimeChunk("Exercise", "red")}>Start Exercise</button>
           </div>
           <div className='grid-item'>
-            <button className='start-task-button' onClick={() => this.newTimeChunk("Read", "yellow")}>Start Read</button>
+            <button className='start-task-button' 
+            style={{ background: this.state.currentTask === "Read" ? "#07b338" : "#334E68" }} 
+            onClick={() => this.newTimeChunk("Read", "yellow")}>Start Read</button>
           </div>
           <div className='grid-item'>
-            <button className='start-task-button' onClick={() => this.newTimeChunk("Sleep", "blue")}>Start Sleep</button>
+            <button className='start-task-button' 
+            style={{ background: this.state.currentTask === "Sleep" ? "#07b338" : "#334E68" }} 
+            onClick={() => this.newTimeChunk("Sleep", "blue")}>Start Sleep</button>
           </div>
         </div>
 
