@@ -130,8 +130,8 @@ class Stopwatch extends React.Component {
         <div className='grid-container'>
           <div className='grid-item'>
             <button className='start-task-button' 
-            style={{ background: this.state.currentTask === "Work" ? "purple" : "#334E68" }}
-            onClick={() => this.newTimeChunk("Work", "purple")}>
+            style={{ background: this.state.currentTask === "Work" ? "green" : "#334E68" }}
+            onClick={() => this.newTimeChunk("Work", "green")}>
             {this.state.currentTask === "Work" ? "Currently Working" : "Start Work"}</button>
           </div>
           <div className='grid-item'>
@@ -142,8 +142,8 @@ class Stopwatch extends React.Component {
           </div>
           <div className='grid-item'>
             <button className='start-task-button' 
-            style={{ background: this.state.currentTask === "Eat" ? "green" : "#334E68" }} 
-            onClick={() => this.newTimeChunk("Eat", "green")}>
+            style={{ background: this.state.currentTask === "Eat" ? "#AF601A" : "#334E68" }} 
+            onClick={() => this.newTimeChunk("Eat", "#AF601A")}>
             {this.state.currentTask === "Eat" ? "Currently Eating" : "Start Eating"}</button>
           </div>
           <div className='grid-item'>
@@ -154,8 +154,8 @@ class Stopwatch extends React.Component {
           </div>
           <div className='grid-item'>
             <button className='start-task-button' 
-            style={{ background: this.state.currentTask === "Read" ? "#AF601A" : "#334E68" }} 
-            onClick={() => this.newTimeChunk("Read", "#AF601A")}>
+            style={{ background: this.state.currentTask === "Read" ? "purple" : "#334E68" }} 
+            onClick={() => this.newTimeChunk("Read", "purple")}>
             {this.state.currentTask === "Read" ? "Currently Reading" : "Start Reading"}</button>
           </div>
           <div className='grid-item'>
