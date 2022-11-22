@@ -1,0 +1,12 @@
+.name {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    text-align: center;
+    color: #cfcfcf;
+}
+
+.container {
+    background-color: #102A43;
+    min-height: 100vh;
+}

@@ -1,8 +1,5 @@
 import React, { Fragment } from 'react';
-import ReactDOM from 'react-dom';
-import StopwatchDisplay from './StopwatchDisplay.js';
 import ElapsedTimeBar from './ElapsedTimeBar';
-import StopwatchHistory from './StopwatchHistory.js';
 import "./stopwatch.css";
 import TextClock from './TextClock.js';
 
@@ -17,7 +14,7 @@ class Stopwatch extends React.Component {
       currentTimeMin: 0,
       currentTaskStarted: 28800,
       currentTask: "Break",
-      currentColor: "gray",
+      currentColor: "#900D09",
       timeChunks: [
         {
           "name": "Sleep",

@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header.js';
 import Stopwatch from "./components/Stopwatch";
-import SuccessfulSchedules from './components/SuccessfulSchedules';
+import SuccessfulSchedules from './components/SuccessfullSchedules';
 import React, { Fragment, useEffect } from 'react';
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
           {/* <p>"The best time to plant a tree was 20 years ago. The second best time is now."</p> */}
           <Stopwatch/>
         </div>
-        <SuccessfulSchedules/>
+        <br/>
         <p>
           We dont allow editing of the history of tracked time so that you dont get into the habbit 
           of forgeting to track your time and then retroactively editing your history to what you think 
@@ -34,7 +34,6 @@ function App() {
         </p>
         <br/>
       </Fragment> 
-      
     </div>
   );
 }

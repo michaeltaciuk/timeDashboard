@@ -13,6 +13,7 @@ const ElapsedTimeBar = (props) => {
     return (
         <Fragment>
             <div className="timeBarContainer">
+                
                 <div className="timeBar" style={{width: `${width}px`, height: height}}/>
                 {timeChunks.map( timeChunk => 
                     <Tooltip title={`${timeChunk.name}: ${Math.floor(timeChunk.seconds / 60)} min`}>

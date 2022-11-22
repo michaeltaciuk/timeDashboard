@@ -1,5 +1,7 @@
 import React, {Fragment} from "react";
 import ElapsedTimeBar from "./ElapsedTimeBar";
+import "./SuccessfullSchedules.css";
+import Header from "./Header";
 
 const SuccessfulSchedules = (props) => {
 
@@ -148,14 +150,17 @@ const SuccessfulSchedules = (props) => {
     ]
 
     return (
-        <Fragment>
-            <h2>Benjamin Franklin</h2>
-            <ElapsedTimeBar timeChunks={benjaminFranklin}/>
-            <br/>
-            <h2>Charles Darwin</h2>
-            <ElapsedTimeBar timeChunks={charlesDarwin}/>
-            <br/>
-        </Fragment>
+        <div className="container">
+            <Header/>
+            <Fragment>
+                <h2 className="name">Benjamin Franklin</h2>
+                <ElapsedTimeBar timeChunks={benjaminFranklin}/>
+                <br/>
+                <h2 className="name">Charles Darwin</h2>
+                <ElapsedTimeBar timeChunks={charlesDarwin}/>
+                <br/>
+            </Fragment>
+        </div>
     );
 }
 
