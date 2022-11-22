@@ -13,7 +13,14 @@
 
   .time-bar {
     padding-bottom: 50px;
-    
+
+  }
+
+  .timeScale {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    font-size: small;
   }
 
   .start-task-button {

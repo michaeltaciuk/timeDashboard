@@ -120,6 +120,15 @@ class Stopwatch extends React.Component {
     console.log(this.state.timeChunks);
     return (
       <Fragment>
+        <br/>
+        <div className="timeScale" style={{ width: "100vw" }}>
+          <div className="timeScaleText">12am</div>
+          <div className="timeScaleText" style={{ left: "16.67vw", position: "absolute", fontSize: "small"}}>4am</div>
+          <div className="timeScaleText" style={{ left: "33.33vw", position: "absolute", fontSize: "small"}}>8am</div>
+          <div className="timeScaleText" style={{ left: "50vw", position: "absolute", fontSize: "small"}}>12pm</div>
+          <div className="timeScaleText" style={{ left: "66.67vw", position: "absolute", fontSize: "small"}}>4pm</div>
+          <div className="timeScaleText" style={{ left: "83.33vw", position: "absolute", fontSize: "small"}}>8pm</div>
+        </div>
         <div className='time-bar'>
           <ElapsedTimeBar  timeChunks={this.state.timeChunks} />
         </div>
