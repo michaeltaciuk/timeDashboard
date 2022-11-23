@@ -26,12 +26,12 @@ function App() {
           <Stopwatch/>
         </div>
         <br/>
-        <p>
+        {/* <p>
           We dont allow editing of the history of tracked time so that you dont get into the habbit 
           of forgeting to track your time and then retroactively editing your history to what you think 
           it was. This will inevitably be inaccurate and hide from you where your time is being 
           unknowingly wasted. Which is contrary to the goal of tracking your time.
-        </p>
+        </p> */}
         <br/>
       </Fragment> 
     </div>
