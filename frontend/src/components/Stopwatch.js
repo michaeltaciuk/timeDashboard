@@ -134,7 +134,6 @@ class Stopwatch extends React.Component {
         </div>
         
         <br/>
-        <TextClock/>
         
         <div className='grid-container'>
           <div className='grid-item'>
