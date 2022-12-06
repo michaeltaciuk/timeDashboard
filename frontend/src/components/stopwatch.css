@@ -1,50 +1,99 @@
 .grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    margin: 10px;
-    margin: 6vw;
-    margin-top: 0;
-  }
-  .grid-item {
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-  }
+  margin: 6vw;
+  margin-top: 0;
+}
 
-  .time-bar {
-    padding-bottom: 50px;
+.grid-item {
+  padding: 1vh;
+  font-size: 30px;
+  text-align: center;
+}
 
+.time-bar {
+  padding-bottom: 50px;
+
+}
+
+.timeScale {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  font-size: small;
+}
+
+.start-task-button {
+  background: #334E68;
+  color: #cfcfcf;
+  width: 40vw;
+  border-radius: 5px;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  cursor: pointer;
+}
+
+.start-task-button:hover {
+  transform: scale(1.1);
+}
+
+.runnig-task-button {
+  background: rgb(31, 255, 35);
+  font-size: 45px;
+  border-radius: 5px;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.barchart {
+  margin-top: 5vh;
+  margin-right: 5vw;
+}
+
+
+@media only screen and (min-width: 1080px) {
+  .barchart {
+    margin-top: 5vh;
+    margin-right: 5vw;
   }
-
-  .timeScale {
+  .button-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    width: 100vw;
-    font-size: small;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: center;
+    text-align: center;
+    
+  }
+
+  .grid-container {
+    height: 20vh;
   }
 
   .start-task-button {
-    background: #334E68;
-    color: #cfcfcf;
     width: 20vw;
-    border-radius: 5px;
-    padding-left: 1em;
-    padding-right: 1em;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    cursor: pointer;
   }
 
-  .start-task-button:hover {
-    transform: scale(1.1);
-  }
+}
 
-  .runnig-task-button {
-    background: rgb(31, 255, 35);
-    font-size: 45px;
-    border-radius: 5px;
-    padding-left: 1em;
-    padding-right: 1em;
-    padding-top: 1em;
-    padding-bottom: 1em;
+@media only screen and (min-width: 1650px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin: 10px;
   }
+  .grid-container {
+    height: 20vh;
+    margin-top: 10vh;
+  }
+  .grid-item {
+    padding: 20px;
+    height: 5vh;
+  }
+  .start-task-button {
+    width: 15vw;
+  }
+}
