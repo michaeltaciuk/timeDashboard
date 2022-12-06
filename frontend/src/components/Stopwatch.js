@@ -23,6 +23,8 @@ class Stopwatch extends React.Component {
           "started": 0,
           "seconds": 28800
         }
+      ],
+      timeTotals: [
       ]
     };
   }
@@ -90,7 +92,7 @@ class Stopwatch extends React.Component {
     }
   };
 
-  newTimeChunk = (name, color) => {
+  newTimeChunk = (TaskName, color) => {
     // this.setState({ running: false });
     // clearInterval(this.watch); 
 
@@ -99,13 +101,33 @@ class Stopwatch extends React.Component {
     console.log(s);
 
     this.setState(prev => ({
-      timeChunks: [...prev.timeChunks, { name: prev.currentTask, color: prev.currentColor, started: prev.currentTaskStarted, seconds: (s - prev.currentTaskStarted) }]
+      timeChunks: [...prev.timeChunks, { TaskName: prev.currentTask, color: prev.currentColor, started: prev.currentTaskStarted, seconds: (s - prev.currentTaskStarted) }]
     }))
 
     //this.saveTime();
     this.setState({ currentColor: color });
-    this.setState({ currentTask: name });
+    this.setState({ currentTask: TaskName });
     this.setState({ currentTaskStarted: s });
+
+    var sums = {};
+    for (var key in this.state.timeChunks){
+      var currentChunk = this.state.timeChunks[key];
+      var Chunkname = currentChunk.name;
+
+      if (sums.hasOwnProperty(Chunkname)){
+        sums[key] += currentChunk.seconds;
+      }
+      else {
+        sums[key] = {name: Chunkname, seconds: currentChunk.seconds};
+      }
+    }
+    var timeTotals = [];
+    for (var name in sums){
+      console.log(name);
+      timeTotals.push({name: sums[name].name, minutes: sums[name].seconds/60});
+    }
+    this.setState({ timeTotals: timeTotals});
+    console.log(timeTotals);
 
     // this.setState({
     //   currentTimeMs: 0,
@@ -118,43 +140,15 @@ class Stopwatch extends React.Component {
   }
 
   render() {
-    console.log(this.state.timeChunks);
-
-    const data = [
-      {
-        name: 'Sleep',
-        minutes: 480,
-      },
-      {
-        name: 'Work',
-        hours: 3000,
-      },
-      {
-        name: 'Read',
-        hours: 3000,
-      },
-      {
-        name: 'Break',
-        hours: 2000,
-      },
-      {
-        name: 'Eat',
-        hours: 2780,
-      },
-      {
-        name: 'Workout',
-        hours: 1890,
-      },
-    ];
 
     const renderLineChart = (
-      <BarChart width={600} height={400} data={data}>
+      <BarChart width={600} height={400} data={this.state.timeTotals}>
         <CartesianGrid strokeDasharray="3 3" />
         <YAxis />
         <XAxis dataKey="name"/>
         <Tooltip />
         <Legend />
-        <Bar dataKey="hours" fill="#5baefb" />
+        <Bar dataKey="minutes" fill="#5baefb" />
 
       </BarChart>
     );
