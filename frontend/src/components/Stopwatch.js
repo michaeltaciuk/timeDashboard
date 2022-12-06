@@ -122,8 +122,12 @@ class Stopwatch extends React.Component {
 
     const data = [
       {
+        name: 'Sleep',
+        minutes: 480,
+      },
+      {
         name: 'Work',
-        hours: 4000,
+        hours: 3000,
       },
       {
         name: 'Read',
