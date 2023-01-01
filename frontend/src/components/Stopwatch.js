@@ -88,6 +88,7 @@ class Stopwatch extends React.Component {
       var td = new Date();
       var ts = Math.floor((td.getSeconds()) + (td.getMinutes() * 60) + (td.getHours() * 3600));
       this.setState({ currentSec: ts });
+      
     }
     if (this.state.currentTimeSec >= 60) {
       this.setState({ currentTimeMin: this.state.currentTimeMin + 1 });
@@ -98,39 +99,41 @@ class Stopwatch extends React.Component {
   newTimeChunk = (TaskName, color) => {
     // this.setState({ running: false });
     // clearInterval(this.watch); 
-
+    console.log(TaskName);
+    console.log(this.state.currentTask);
     var d = new Date();
     var s = Math.floor((d.getSeconds()) + (d.getMinutes() * 60) + (d.getHours() * 3600));
-    console.log(s);
 
     this.setState(prev => ({
-      timeChunks: [...prev.timeChunks, { TaskName: prev.currentTask, color: prev.currentColor, started: prev.currentTaskStarted, seconds: (s - prev.currentTaskStarted) }]
-    }))
-
+      timeChunks: [...prev.timeChunks, { name: prev.currentTask, color: prev.currentColor, started: prev.currentTaskStarted, seconds: (s - prev.currentTaskStarted) }]
+    }), () => {console.log(this.state.timeChunks)});
     //this.saveTime();
-    this.setState({ currentColor: color });
-    this.setState({ currentTask: TaskName });
-    this.setState({ currentTaskStarted: s });
+  
+    this.setState({ 
+      currentColor: color,
+      currentTask: TaskName,
+      currentTaskStarted: s 
+    }, () => {console.log(this.state.currentTask)});
+    
+    
+    // var sums = {};
+    // for (var key in this.state.timeChunks){
+    //   var currentChunk = this.state.timeChunks[key];
+    //   var Chunkname = currentChunk.name;
 
-    var sums = {};
-    for (var key in this.state.timeChunks){
-      var currentChunk = this.state.timeChunks[key];
-      var Chunkname = currentChunk.name;
-
-      if (sums.hasOwnProperty(Chunkname)){
-        sums[key] += currentChunk.seconds;
-      }
-      else {
-        sums[key] = {name: Chunkname, seconds: currentChunk.seconds};
-      }
-    }
-    var timeTotals = [];
-    for (var name in sums){
-      console.log(name);
-      timeTotals.push({name: sums[name].name, minutes: sums[name].seconds/60});
-    }
-    this.setState({ timeTotals: timeTotals});
-    console.log(timeTotals);
+    //   if (sums.hasOwnProperty(Chunkname)){
+    //     sums[key] += currentChunk.seconds;
+    //   }
+    //   else {
+    //     sums[key] = {name: Chunkname, seconds: currentChunk.seconds};
+    //   }
+    // }
+    // var timeTotals = [];
+    // for (var name in sums){
+    //   console.log(name);
+    //   timeTotals.push({name: sums[name].name, minutes: sums[name].seconds/60});
+    // }
+    // this.setState({ timeTotals: timeTotals});
 
     // this.setState({
     //   currentTimeMs: 0,
@@ -182,7 +185,7 @@ class Stopwatch extends React.Component {
 
         <br />
 
-        <TextClock />
+        {/* <TextClock /> */}
 
         <div className='button-container'>
           
@@ -224,7 +227,7 @@ class Stopwatch extends React.Component {
                 {this.state.currentTask === "Sleep" ? `Currently Sleeping: ${this.state.currentSec - this.state.currentTaskStarted}` : "Start Sleeping"}</button>
             </div>
           </div>
-          <div className="barchart">{renderLineChart}</div>
+          {/* <div className="barchart">{renderLineChart}</div> */}
         </div>
 
 
