@@ -13,6 +13,7 @@ class Stopwatch extends React.Component {
       currentTimeMs: 0,
       currentTimeSec: 0,
       currentTimeMin: 0,
+      currentSec: 0,
       currentTaskStarted: 28800,
       currentTask: "Break",
       currentColor: "#900D09",
@@ -33,7 +34,7 @@ class Stopwatch extends React.Component {
     //this.setHistoryState();
 
     // this.setState({ running: true });
-    // this.watch = setInterval(() => this.pace(), 10);
+    this.watch = setInterval(() => this.pace(), 10);
 
     var d = new Date();
     var seconds = Math.floor((d.getSeconds()) + (d.getMinutes() * 60) + (d.getHours() * 3600));
@@ -84,7 +85,9 @@ class Stopwatch extends React.Component {
     if (this.state.currentTimeMs >= 1000) {
       this.setState({ currentTimeSec: this.state.currentTimeSec + 1 });
       this.setState({ currentTimeMs: 0 });
-
+      var td = new Date();
+      var ts = Math.floor((td.getSeconds()) + (td.getMinutes() * 60) + (td.getHours() * 3600));
+      this.setState({ currentSec: ts });
     }
     if (this.state.currentTimeSec >= 60) {
       this.setState({ currentTimeMin: this.state.currentTimeMin + 1 });
@@ -188,37 +191,37 @@ class Stopwatch extends React.Component {
               <button className='start-task-button'
                 style={{ background: this.state.currentTask === "Work" ? "green" : "#334E68" }}
                 onClick={() => this.newTimeChunk("Work", "green")}>
-                {this.state.currentTask === "Work" ? "Currently Working" : "Start Work"}</button>
+                {this.state.currentTask === "Work" ? `Currently Working: ${this.state.currentSec - this.state.currentTaskStarted}` : "Start Work"}</button>
             </div>
             <div className='grid-item'>
               <button className='start-task-button'
                 style={{ background: this.state.currentTask === "Break" ? "#900D09" : "#334E68" }}
                 onClick={() => this.newTimeChunk("Break", "#900D09")}>
-                {this.state.currentTask === "Break" ? "Currently on Break" : "Start Brake"}</button>
+                {this.state.currentTask === "Break" ? `Currently on Break: ${this.state.currentSec - this.state.currentTaskStarted}` : "Start Brake"}</button>
             </div>
             <div className='grid-item'>
               <button className='start-task-button'
                 style={{ background: this.state.currentTask === "Eat" ? "#AF601A" : "#334E68" }}
                 onClick={() => this.newTimeChunk("Eat", "#AF601A")}>
-                {this.state.currentTask === "Eat" ? "Currently Eating" : "Start Eating"}</button>
+                {this.state.currentTask === "Eat" ? `Currently Eating: ${this.state.currentSec - this.state.currentTaskStarted}` : "Start Eating"}</button>
             </div>
             <div className='grid-item'>
               <button className='start-task-button'
                 style={{ background: this.state.currentTask === "Exercise" ? "#14AF77" : "#334E68" }}
-                onClick={() => this.newTimeChunk("Exercise", "14AF77")}>
-                {this.state.currentTask === "Exercise" ? "Currently Exercising" : "Start Exercising"}</button>
+                onClick={() => this.newTimeChunk("Exercise", "#14AF77")}>
+                {this.state.currentTask === "Exercise" ? `Currently Exercising: ${this.state.currentSec - this.state.currentTaskStarted}` : "Start Exercising"}</button>
             </div>
             <div className='grid-item'>
               <button className='start-task-button'
                 style={{ background: this.state.currentTask === "Read" ? "purple" : "#334E68" }}
                 onClick={() => this.newTimeChunk("Read", "purple")}>
-                {this.state.currentTask === "Read" ? "Currently Reading" : "Start Reading"}</button>
+                {this.state.currentTask === "Read" ? `Currently Reading: ${this.state.currentSec - this.state.currentTaskStarted}` : "Start Reading"}</button>
             </div>
             <div className='grid-item'>
               <button className='start-task-button'
                 style={{ background: this.state.currentTask === "Sleep" ? "#21618C" : "#334E68" }}
                 onClick={() => this.newTimeChunk("Sleep", "#21618C")}>
-                {this.state.currentTask === "Sleep" ? "Currently Sleeping" : "Start Sleeping"}</button>
+                {this.state.currentTask === "Sleep" ? `Currently Sleeping: ${this.state.currentSec - this.state.currentTaskStarted}` : "Start Sleeping"}</button>
             </div>
           </div>
           <div className="barchart">{renderLineChart}</div>
