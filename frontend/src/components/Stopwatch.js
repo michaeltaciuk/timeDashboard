@@ -69,15 +69,10 @@ class Stopwatch extends React.Component {
     this.setHistoryState();
   };
 
-  formatTime = (val, ...rest) => {
-    let value = val.toString();
-    if (value.length < 2) {
-      value = '0' + value;
-    }
-    if (rest[0] === 'ms' && value.length < 3) {
-      value = '0' + value;
-    }
-    return value;
+  formatTime = (sec) => {
+    const date = new Date(null);
+    date.setSeconds(sec);
+    return date.toISOString().slice(11, 19);
   };
 
   pace = () => {
@@ -168,6 +163,8 @@ class Stopwatch extends React.Component {
       </div>
     };
 
+    const elapsedTime = this.formatTime(this.state.currentSec - this.state.currentTaskStarted);
+
     return (
       <Fragment>
         <br />
@@ -194,37 +191,37 @@ class Stopwatch extends React.Component {
               <button className='start-task-button'
                 style={{ background: this.state.currentTask === "Work" ? "green" : "#334E68" }}
                 onClick={() => this.newTimeChunk("Work", "green")}>
-                {this.state.currentTask === "Work" ? `Currently Working: ${this.state.currentSec - this.state.currentTaskStarted}` : "Start Work"}</button>
+                {this.state.currentTask === "Work" ? `Currently Working: ${elapsedTime}` : "Start Work"}</button>
             </div>
             <div className='grid-item'>
               <button className='start-task-button'
                 style={{ background: this.state.currentTask === "Break" ? "#900D09" : "#334E68" }}
                 onClick={() => this.newTimeChunk("Break", "#900D09")}>
-                {this.state.currentTask === "Break" ? `Currently on Break: ${this.state.currentSec - this.state.currentTaskStarted}` : "Start Brake"}</button>
+                {this.state.currentTask === "Break" ? `Currently on Break: ${elapsedTime}` : "Start Brake"}</button>
             </div>
             <div className='grid-item'>
               <button className='start-task-button'
                 style={{ background: this.state.currentTask === "Eat" ? "#AF601A" : "#334E68" }}
                 onClick={() => this.newTimeChunk("Eat", "#AF601A")}>
-                {this.state.currentTask === "Eat" ? `Currently Eating: ${this.state.currentSec - this.state.currentTaskStarted}` : "Start Eating"}</button>
+                {this.state.currentTask === "Eat" ? `Currently Eating: ${elapsedTime}` : "Start Eating"}</button>
             </div>
             <div className='grid-item'>
               <button className='start-task-button'
                 style={{ background: this.state.currentTask === "Exercise" ? "#14AF77" : "#334E68" }}
                 onClick={() => this.newTimeChunk("Exercise", "#14AF77")}>
-                {this.state.currentTask === "Exercise" ? `Currently Exercising: ${this.state.currentSec - this.state.currentTaskStarted}` : "Start Exercising"}</button>
+                {this.state.currentTask === "Exercise" ? `Currently Exercising: ${elapsedTime}` : "Start Exercising"}</button>
             </div>
             <div className='grid-item'>
               <button className='start-task-button'
                 style={{ background: this.state.currentTask === "Read" ? "purple" : "#334E68" }}
                 onClick={() => this.newTimeChunk("Read", "purple")}>
-                {this.state.currentTask === "Read" ? `Currently Reading: ${this.state.currentSec - this.state.currentTaskStarted}` : "Start Reading"}</button>
+                {this.state.currentTask === "Read" ? `Currently Reading: ${elapsedTime}` : "Start Reading"}</button>
             </div>
             <div className='grid-item'>
               <button className='start-task-button'
                 style={{ background: this.state.currentTask === "Sleep" ? "#21618C" : "#334E68" }}
                 onClick={() => this.newTimeChunk("Sleep", "#21618C")}>
-                {this.state.currentTask === "Sleep" ? `Currently Sleeping: ${this.state.currentSec - this.state.currentTaskStarted}` : "Start Sleeping"}</button>
+                {this.state.currentTask === "Sleep" ? `Currently Sleeping: ${elapsedTime}` : "Start Sleeping"}</button>
             </div>
           </div>
           {/* <div className="barchart">{renderLineChart}</div> */}
