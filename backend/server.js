@@ -3,6 +3,7 @@ const express = require('express')
 //const mongoose = require('mongoose')
 //const routes = require('./routes/api');
 require('dotenv').config();
+const path = require('path');
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -23,6 +24,20 @@ const port = process.env.PORT || 3000
 //app.use(bodyParser.json());
 
 //app.use('/api', routes);
+
+//handle api requests
+app.get('/api/users', (req, res) => {
+    console.log('GET request');
+    
+});
+
+//serve static files from the frontend folder
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+//serve frontend on base url
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/build'));
+});
 
 app.use((err, req, res, next) => {
     console.log(err);
