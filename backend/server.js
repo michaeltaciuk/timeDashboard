@@ -1,12 +1,16 @@
 const express = require('express')
-//const bodyParser = require('body-parser');
-//const mongoose = require('mongoose')
-//const routes = require('./routes/api');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose')
+const cookieParser = require('cookie-parser');
+const log = require('debug')('server');
+const logError = require('debug')('server:error');
+const cors = require('cors');
+
 require('dotenv').config();
-const path = require('path');
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT
+const host = process.env.HOST
 
 // mongoose
 //     .connect(process.env.DB, { useNewUrlParser: true })
@@ -31,12 +35,10 @@ app.get('/api/users', (req, res) => {
     
 });
 
-//serve static files from the frontend folder
-app.use(express.static(path.join(__dirname, '../frontend/build')));
-
-//serve frontend on base url
+//send hello message on base url
+const routes = require('./routes');
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/build'));
+    res.send('hello');
 });
 
 app.use((err, req, res, next) => {
@@ -44,6 +46,6 @@ app.use((err, req, res, next) => {
     next();
 });
 
-app.listen(port, () => {
+app.listen(port, host, () => {
     console.log(`Express server listening on port ${port}`)
 })
