@@ -8,44 +8,47 @@ const cors = require('cors');
 
 require('dotenv').config();
 
-const app = express()
-const port = process.env.PORT
-const host = process.env.HOST
+const app = express();
+const port = process.env.PORT;
+const host = process.env.HOST;
 
-// mongoose
-//     .connect(process.env.DB, { useNewUrlParser: true })
-//     .then(() => console.log(`Database connected successfully`))
-//     .catch((err) => console.log(err));
+(async () => {
+    try {
+        app.use(cors());
+        app.options('*', cors());
+        app.use(cookieParser());
 
-// mongoose.Promise = global.Promise;
+        const router = require('./routes');
 
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//     next();
-// });
+        app.use(bodyParser.json());
+        app.use(bodyParser.urlencoded({ extended: true }));
+        app.use('/api/v1', router);
 
-//app.use(bodyParser.json());
+        const mongoUser = process.env.MONGO_USER;
+        const mongoPassword = process.env.MONGO_PASSWORD;
+        const mongoIP = process.env.MONGO_IP;
+        const mongoPort = process.env.MONGO_PORT;
+        
+        if (!mongoUser || !mongoPassword || !mongoIP || !mongoPort || !host || !port) {
+            throw new Error('Mongo env variables are not defined');
+        }
+        await mongoose.connect(
+            `mongodb+srv://${mongoUser}:${mongoPassword}@cluster0.gomcefl.mongodb.net/?retryWrites=true&w=majority`,
+            {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+            }
+        );
+        log('Connected to MongoDB');
 
-//app.use('/api', routes);
+        app.listen(port, host, () => {
+            log(`Server listening at http://${host}:${port}`);
+        });
 
-//handle api requests
-app.get('/api/users', (req, res) => {
-    console.log('GET request');
-    
-});
-
-//send hello message on base url
-const routes = require('./routes');
-app.get('*', (req, res) => {
-    res.send('hello');
-});
-
-app.use((err, req, res, next) => {
-    console.log(err);
-    next();
-});
-
-app.listen(port, host, () => {
-    console.log(`Express server listening on port ${port}`)
-})
+        mongoose.connection.on('error', (err) => {
+            logError(err);
+        });
+    } catch (err) {
+        logError(err);
+    }
+})();
