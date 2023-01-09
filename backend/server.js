@@ -2,8 +2,6 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser');
-const log = require('debug')('server');
-const logError = require('debug')('server:error');
 const cors = require('cors');
 
 require('dotenv').config();
@@ -22,7 +20,7 @@ const host = process.env.HOST;
 
         app.use(bodyParser.json());
         app.use(bodyParser.urlencoded({ extended: true }));
-        app.use('/api/v1', router);
+        app.use('/api', router);
 
         const mongoUser = process.env.MONGO_USER;
         const mongoPassword = process.env.MONGO_PASSWORD;
@@ -39,16 +37,16 @@ const host = process.env.HOST;
                 useUnifiedTopology: true,
             }
         );
-        log('Connected to MongoDB');
+        console.log('Connected to MongoDB');
 
         app.listen(port, host, () => {
-            log(`Server listening at http://${host}:${port}`);
+            console.log(`Server listening at http://${host}:${port}`);
         });
 
         mongoose.connection.on('error', (err) => {
-            logError(err);
+            console.log(err);
         });
     } catch (err) {
-        logError(err);
+        console.log(err);
     }
 })();
