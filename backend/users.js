@@ -1,7 +1,5 @@
 const { User, Session } = require("./schemas");
 const mongoose = require("mongoose");
-const log = require("debug")("sessions");
-const logError = require("debug")("sessions:error");
 
 const options = { upsert: true, new: true };
 
@@ -56,7 +54,7 @@ const deleteUser = async (userId) => {
 
     await Promise.all([sessionPromise, userPromise]);
   } catch (e) {
-    logError(e);
+    console.log(e);
   }
 };
 
