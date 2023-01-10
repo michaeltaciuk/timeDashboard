@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
 import ElapsedTimeBar from './ElapsedTimeBar';
-import "./stopwatch.css";
+import "./Stopwatch.css";
 import TextClock from './TextClock.js';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import SuccessfulSchedules from './SuccessfullSchedules';
 
 class Stopwatch extends React.Component {
   constructor(props) {
@@ -233,7 +234,7 @@ class Stopwatch extends React.Component {
           {/* <div className="barchart">{renderLineChart}</div> */}
         </div>
 
-
+        <SuccessfulSchedules />
 
 
       </Fragment>

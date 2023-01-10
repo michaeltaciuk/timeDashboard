@@ -1,14 +1,13 @@
 import React, {Fragment} from "react";
 import ElapsedTimeBar from "./ElapsedTimeBar";
 import "./SuccessfullSchedules.css";
-import Header from "./Header";
 
 const SuccessfulSchedules = (props) => {
 
     var benjaminFranklin = [
         {
           "name": "Sleep",
-          "color": "Blue",
+          "color": "#21618C",
           "started": 0,
           "seconds": 18000
         },
@@ -20,31 +19,31 @@ const SuccessfulSchedules = (props) => {
         },
         {
             "name": "Work",
-            "color": "Orange",
+            "color": "green",
             "started": 28800,
             "seconds": 14400
         },
         {
             "name": "Read, Overlook Accounts and Dine",
-            "color": "Green",
+            "color": "purple",
             "started": 43200,
             "seconds": 7200
         },
         {
             "name": "Work",
-            "color": "Orange",
+            "color": "green",
             "started": 50400,
             "seconds": 14400
         },
         {
             "name": "Supper, Music, Diversion or Conversation. Examination of the day and put things in their places",
-            "color": "Gray",
+            "color": "#900D09",
             "started": 64800,
             "seconds": 14400
         },
         {
             "name": "Sleep",
-            "color": "Blue",
+            "color": "#21618C",
             "started": 79200,
             "seconds": 10800
         }
@@ -53,97 +52,97 @@ const SuccessfulSchedules = (props) => {
     var charlesDarwin = [
         {
           "name": "Sleep",
-          "color": "Blue",
+          "color": "#21618C",
           "started": 0,
           "seconds": 25200
         },
         {
             "name": "Walk",
-            "color": "LightBlue",
+            "color": "#14AF77",
             "started": 25200,
             "seconds": 2700
         },
         {
             "name": "Breakfast",
-            "color": "Green",
+            "color": "#AF601A",
             "started": 27900,
             "seconds": 900
         },
         {
             "name": "Work",
-            "color": "Orange",
+            "color": "green",
             "started": 28800,
             "seconds": 5400
         },
         {
             "name": "Read",
-            "color": "Yellow",
+            "color": "purple",
             "started": 34200,
             "seconds": 3600
         },
         {
             "name": "Work",
-            "color": "Orange",
+            "color": "green",
             "started": 37800,
             "seconds": 5400
         },
         {
             "name": "Walk",
-            "color": "LightBlue",
+            "color": "#14AF77",
             "started": 43200,
             "seconds": 2700
         },
         {
             "name": "Lunch",
-            "color": "Green",
+            "color": "#AF601A",
             "started": 45900,
             "seconds": 2700
         },
         {
             "name": "Read",
-            "color": "Yellow",
+            "color": "purple",
             "started": 48600,
             "seconds": 5400
         },
         {
             "name": "Break",
-            "color": "Gray",
+            "color": "#900D09",
             "started": 54000,
             "seconds": 3600
         },
         {
             "name": "Walk",
-            "color": "LightBlue",
+            "color": "#14AF77",
             "started": 57600,
             "seconds": 1800
         },
         {
             "name": "Work",
-            "color": "Orange",
+            "color": "green",
             "started": 59400,
             "seconds": 3600
         },
         {
             "name": "Break",
-            "color": "Gray",
+            "color": "#900D09",
             "started": 63000,
             "seconds": 7200
         },
         {
             "name": "Dinner",
-            "color": "Green",
+            "color": "#AF601A",
             "started": 70200,
             "seconds": 2700
         },
         {
             "name": "Break",
-            "color": "Gray",
+            "color": "#900D09",
             "started": 72900,
             "seconds": 7200
         },
         {
             "name": "Sleep",
-            "color": "Blue",
+            "color": "#21618C",
             "started": 80100,
             "seconds": 86400
         }
@@ -151,7 +150,6 @@ const SuccessfulSchedules = (props) => {
 
     return (
         <div className="container">
-            <Header/>
             <Fragment>
                 <h2 className="name">Benjamin Franklin</h2>
                 <ElapsedTimeBar timeChunks={benjaminFranklin}/>
