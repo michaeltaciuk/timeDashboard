@@ -5,10 +5,10 @@ const users = require("./users");
 
 const log = require("debug")("routes");
 
-router.get("/private", async (req, res) => {
-  log("req.cookies.token", req.cookies.token);
-  if (!req.cookies.token) return res.status(401).send();
-  res.status(200).json({ secret: "Ginger ale is a specific Root Beer" });
+router.get("/user/:userEmail", async (req, res) => {
+    const { userEmail } = req;
+    const result = await users.getUser(userEmail);
+    res.send(result);
 });
 
 router.post("/user/new", async (req, res) => {

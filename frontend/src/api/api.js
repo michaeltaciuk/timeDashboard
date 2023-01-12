@@ -1,5 +1,4 @@
 import axios from "axios";
-import { updateUser } from "../../../backend/users";
 
 const url = "http://localhost:3000";
 

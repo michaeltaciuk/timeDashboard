@@ -3,6 +3,16 @@ const mongoose = require("mongoose");
 
 const options = { upsert: true, new: true };
 
+const getUser = async (userEmail) => {
+    try {
+        return await User.findOne({
+            email: userEmail,
+        });
+    } catch (e) {
+        logError(e);
+    }
+};
+
 const createUser = async ({ name, sessionId }) => {
   try {
     console.log("name", name);
@@ -59,7 +69,8 @@ const deleteUser = async (userId) => {
 };
 
 module.exports = {
-  createUser,
-  updateUser,
-  deleteUser,
+    getUser,
+    createUser,
+    updateUser,
+    deleteUser,
 };
