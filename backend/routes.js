@@ -6,7 +6,8 @@ const users = require("./users");
 const log = require("debug")("routes");
 
 router.get("/user/:userEmail", async (req, res) => {
-    const { userEmail } = req;
+    console.log("routes - router.get");
+    const { userEmail } = req.params;
     const result = await users.getUser(userEmail);
     res.send(result);
 });

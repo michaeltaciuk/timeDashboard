@@ -55,10 +55,19 @@ class SuccessfulSchedules extends React.Component {
     }
 
     async componentDidMount() {
+        console.log("componentDidMount");
         const response = await api.getUserData("charles@darwin.uk");
-        console.log(response.data);
-        this.setState({timeChunks: response.data.history.timeChunks});
+        console.log(response.data.history[0].timeChunks);
+        this.setState({charlesDarwin: response.data.history[0].timeChunks});
     }
+
+    //function the prints the time chunks of charles darwin when it changes
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevState.charlesDarwin !== this.state.charlesDarwin) {
+    //         console.log("componentDidUpdate");
+    //         console.log(this.state.charlesDarwin);
+    //     }
+    // }
 
     // var charlesDarwin = [
     //     {

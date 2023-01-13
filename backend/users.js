@@ -4,10 +4,13 @@ const mongoose = require("mongoose");
 const options = { upsert: true, new: true };
 
 const getUser = async (userEmail) => {
+    console.log(`users - getUser ${userEmail}`);
     try {
-        return await User.findOne({
+        foo =  await User.findOne({
             email: userEmail,
         });
+        console.log(foo);
+        return foo;
     } catch (e) {
         logError(e);
     }
